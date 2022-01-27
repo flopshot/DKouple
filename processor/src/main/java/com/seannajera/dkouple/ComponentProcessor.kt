@@ -111,7 +111,7 @@ class ComponentManagerProcessor : KotlinAbstractProcessor(), KotlinMetadataUtils
         var paramIndex = 0
         dkoupleViewConstructors.forEach { element ->
 
-            val kotlinClassMetadata = (element.kotlinMetadata as KotlinClassMetadata).data
+            val kotlinClassMetadata = (element.kotlinMetadata as? KotlinClassMetadata)?.data ?: return@forEach
 
             val fqClassName =
                 kotlinClassMetadata.nameResolver.getString(kotlinClassMetadata.classProto.fqName)
